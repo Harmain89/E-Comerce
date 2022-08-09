@@ -19,11 +19,17 @@ class AdminController extends Controller
         $result = Admin::where(['email'=>$email, 'password'=>$pass])->get();
 
         if(isset($result['0']->id)) {
-
+            $request->session()->put('ADMIN_LOGIN', true);
+            $request->session()->put('ADMIN_ID', $result['0']->id);
+            return redirect('admin/dashboard');
         }
         else {
             $request->session()->flash('error','Please Enter Valid Login.');
             return redirect('admin');
         }
+    }
+    public function dashboard()
+    {
+        return view('admin.dashboard');
     }
 }
