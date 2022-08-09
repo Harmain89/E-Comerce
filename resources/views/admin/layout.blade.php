@@ -10,7 +10,7 @@
     <meta name="keywords" content="au theme template">
 
     <!-- Title Page-->
-    <title>Login</title>
+    <title>@yield('title')</title>
 
     <!-- Fontfaces CSS-->
     <link href="{{ asset('admin_assets/css/font-face.css') }}" rel="stylesheet" media="all">
@@ -155,6 +155,10 @@
                         <li class="active has-sub">
                             <a class="js-arrow" href="#">
                                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
+                        </li>
+                        <li>
+                            <a href="category">
+                                <i class="fas fa-chart-bar"></i>Category</a>
                         </li>
                         <li>
                             <a href="chart.html">
@@ -416,7 +420,7 @@
             <div class="main-content">
                 <div class="section__content section__content--p30">
                     <div class="container-fluid">
-
+                        @yield('content')
                     </div>
                 </div>
             </div>
