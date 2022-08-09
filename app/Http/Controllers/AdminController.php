@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Admin;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -10,8 +11,19 @@ class AdminController extends Controller
     {
         return view('admin.login');
     }
-    public function auth()
+    public function auth(Request $request)
     {
-        # code...
+        $email = $request->email;
+        $pass = $request->password;
+
+        $result = Admin::where(['email'=>$email, 'password'=>$pass])->get();
+
+        if(isset($result['0']->id)) {
+
+        }
+        else {
+            $request->session()->flash('error','Please Enter Valid Login.');
+            return redirect('admin');
+        }
     }
 }
