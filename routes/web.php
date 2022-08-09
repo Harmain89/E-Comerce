@@ -19,3 +19,4 @@ Route::get('/', function() {
 });
 
 Route::get('admin', [AdminController::class, 'index']);
+Route::get('admin/auth', [AdminController::class, 'auth']);
