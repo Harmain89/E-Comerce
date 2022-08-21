@@ -14,6 +14,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
+        $link_active = "category";
         return view('admin.categories.category');
     }
 

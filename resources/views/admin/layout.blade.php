@@ -1,3 +1,7 @@
+<?php
+
+use Illuminate\Support\Facades\URL;
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -152,11 +156,11 @@
             <div class="menu-sidebar__content js-scrollbar1">
                 <nav class="navbar-sidebar">
                     <ul class="list-unstyled navbar__list">
-                        <li class="active has-sub">
+                        <li class="has-sub <?= (basename(URL::current()) == "dashboard") ? "active" : ""; ?>">
                             <a class="js-arrow" href="dashboard">
                                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                         </li>
-                        <li>
+                        <li class=" <?= (basename(URL::current()) == "category") ? "active" : ""; ?>">
                             <a href="category">
                                 <i class="fas fa-chart-bar"></i>Category</a>
                         </li>
