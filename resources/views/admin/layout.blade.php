@@ -407,8 +407,17 @@ use Illuminate\Support\Facades\URL;
                                                 </div>
                                             </div>
                                             <div class="account-dropdown__footer">
-                                                <a href="#">
-                                                    <i class="zmdi zmdi-power"></i>Logout</a>
+                                                <!-- <form action="{{ route('admin.auth_logout')}}" method="post"> -->
+                                                    <a type="submit" href="{{ route('admin.auth_logout')}}"
+                                                        onclick="event.preventDefault();
+                                                        document.getElementById('logout-form').submit();">
+                                                        <i class="zmdi zmdi-power"></i>Logout
+                                                    </a>
+                                                    <form id="logout-form" action="{{ route('admin.auth_logout') }}" method="POST" class="d-none">
+                                                        @csrf
+                                                        <input type="submit" value="Logout">
+                                                    </form>
+                                                <!-- </form> -->
                                             </div>
                                         </div>
                                     </div>
