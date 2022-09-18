@@ -160,7 +160,7 @@ use Illuminate\Support\Facades\URL;
                             <a class="js-arrow" href="dashboard">
                                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                         </li>
-                        <li class=" <?= (basename(URL::current()) == "category") ? "active" : ""; ?>">
+                        <li class=" <?= (basename(URL::current()) == "category") || (basename(URL::current()) == "manage_category") ? "active" : ""; ?>">
                             <a href="category">
                                 <i class="fas fa-chart-bar"></i>Category</a>
                         </li>

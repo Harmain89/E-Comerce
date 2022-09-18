@@ -3,7 +3,18 @@
 
 @section('content')
 
-<h1>Category</h1>
+<div class="row">
+    <div class="col-6">
+        <h1 class="float-left">Category</h1>
+    </div>
+    <div class="col-6">
+        <a href="manage_category" class="float-right">
+            <button type="button" class="btn btn-success">
+                Add Category
+            </button>
+        </a>
+    </div>
+</div>
 
 <div class="row m-t-30">
     <div class="col-md-12">
