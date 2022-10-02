@@ -20,7 +20,7 @@ Route::get('/', function() {
 });
 
 Route::get('admin', [AdminController::class, 'index']);
-Route::post('admin/auth', [AdminController::class, 'auth'])->name('admin.auth');
+Route::post('admin/auth', [AdminController::class, 'auth'])->name('admin.auth'); 
 Route::post('admin/auth_logout', [AdminController::class, 'auth_logout'])->name('admin.auth_logout');
 
 Route::group(['middleware'=>'admin_auth'], function() {
