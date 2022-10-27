@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\URL;
     <!-- Required meta tags-->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="au theme template"> 
+    <meta name="description" content="au theme template">
     <meta name="author" content="Hau Nguyen">
     <meta name="keywords" content="au theme template">
 
@@ -376,7 +376,7 @@ use Illuminate\Support\Facades\URL;
                                             <img src="{{ asset('admin_assets/images/icon/avatar-01.jpg') }}" alt="John Doe" />
                                         </div>
                                         <div class="content">
-                                            <a class="js-acc-btn" href="#">john doe</a>
+                                            <a class="js-acc-btn" href="#"> {{ session()->get('USERNAME'); }} </a>
                                         </div>
                                         <div class="account-dropdown js-dropdown">
                                             <div class="info clearfix">
@@ -387,7 +387,7 @@ use Illuminate\Support\Facades\URL;
                                                 </div>
                                                 <div class="content">
                                                     <h5 class="name">
-                                                        <a href="#">john doe</a>
+                                                        <a href="#">{{ session()->get('USERNAME') }}</a>
                                                     </h5>
                                                     <span class="email">johndoe@example.com</span>
                                                 </div>

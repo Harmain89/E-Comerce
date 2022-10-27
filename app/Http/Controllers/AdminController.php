@@ -8,9 +8,14 @@ use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        return view('admin.login');
+        if($request->session()->has('ADMIN_LOGIN')) {
+            return redirect('admin/dashboard');
+        }
+        else {
+            return view('admin.login');
+        }
     }
     public function auth(Request $request)
     {
@@ -40,13 +45,20 @@ class AdminController extends Controller
     public function auth_logout(Request $request)
     {
 
-        $request->session()->flush();
+        // $request->session()->flush();
+        $request->session()->forget('ADMIN_LOGIN');
+        $request->session()->forget('ADMIN_ID');
         return redirect('admin');
     }
 
     public function dashboard()
     {
+        $r = Admin::where(['id'=>session()->get('ADMIN_ID')])->first('username');
+        $name = $r['username'];
+        session()->put('USERNAME', $name);
+        // return view('admin.dashboard', ['nm' => $name]);
         return view('admin.dashboard');
+
     }
     public function update_password()
     {
