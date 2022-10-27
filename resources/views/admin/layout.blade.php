@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\URL;
     <meta name="description" content="au theme template">
     <meta name="author" content="Hau Nguyen">
     <meta name="keywords" content="au theme template">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- Title Page-->
     <title>@yield('title')</title>
@@ -36,6 +37,9 @@ use Illuminate\Support\Facades\URL;
 
     <!-- Main CSS-->
     <link href="{{ asset('admin_assets/css/theme.css') }}" rel="stylesheet" media="all">
+
+    <!-- Jquery JS-->
+    <script src="{{ asset('admin_assets/vendor/jquery-3.2.1.min.js')}}"></script>
 
 </head>
 
@@ -436,6 +440,27 @@ use Illuminate\Support\Facades\URL;
                         @yield('content')
                     </div>
                 </div>
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div>
+                    <div class="modal-body">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/></svg>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary btn-lg btn-block" data-dismiss="modal">OK</button>
+                    </div>
+                </div>
+                </div>
+            </div>
+
             </div>
             <!-- END MAIN CONTENT-->
             <!-- END PAGE CONTAINER-->
@@ -443,8 +468,7 @@ use Illuminate\Support\Facades\URL;
 
     </div>
 
-    <!-- Jquery JS-->
-    <script src="{{ asset('admin_assets/vendor/jquery-3.2.1.min.js')}}"></script>
+
     <!-- Bootstrap JS-->
     <script src="{{ asset('admin_assets/vendor/bootstrap-4.1/popper.min.js')}}"></script>
     <script src="{{ asset('admin_assets/vendor/bootstrap-4.1/bootstrap.min.js')}}"></script>

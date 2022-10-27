@@ -28,9 +28,20 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $category = $request->post('category');
+        $category_slug = $request->post('category_slug');
+
+        $model = new Category();
+        $model->category_name = $category;
+        $model->category_slug = $category_slug;
+        $model->save();
+
+        return [
+            "msg"=>"Category ( ".$category." ) has been saved!",
+        ];
+
     }
 
     /**

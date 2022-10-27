@@ -14,7 +14,7 @@
             <h3 class="text-center title-2">Pay Invoice</h3>
         </div>
         <hr>
-        <form action="" method="post" novalidate="novalidate">
+        <form action="" method="">
             <div class="form-group">
                 <label for="category" class="control-label mb-1">Category</label>
                 <input id="category" name="category" type="text" class="form-control" aria-required="true" aria-invalid="false" required>
@@ -24,15 +24,72 @@
                 <input id="category_slug" name="category_slug" type="text" class="form-control" aria-required="true" aria-invalid="false" required>
             </div>
             <div>
-                <button id="payment-button" type="submit" class="btn btn-lg btn-info btn-block">
+                <button id="save" type="" class="btn btn-lg btn-info btn-block">
                     <i class="fa fa-save fa-lg"></i>&nbsp;
                     <span id="payment-button-amount">Save</span>
                     <span id="payment-button-sending" style="display:none;">Saving…</span>
                 </button>
             </div>
         </form>
+        {{-- <h2 class="mt-3" id="gh"></h2> --}}
+
+
+                <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+            Launch demo modal
+        </button>
+
+
+
+
+
     </div>
 </div>
+
+
+<script>
+
+    // $(selector).click(function (e) {
+    //     e.preventDefault();
+    //     new bootstrap.Toast($('#basicToast')).show();
+    // });
+
+
+
+    $(document).ready(function () {
+
+        $('#save').click(function (e) {
+            e.preventDefault();
+
+            var category = $('#category').val();
+            var category_slug = $('#category_slug').val();
+
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                type: "post",
+                url: " {{ url('admin/category_create') }} ",
+                data: {
+                    category: category,
+                    category_slug: category_slug
+                },
+                async : true,
+                dataType: "json",
+                success: function (response) {
+                    $('#gh').html(response.msg);
+                    console.log(response.msg);
+                }
+            });
+
+        });
+
+
+    });
+
+
+
+</script>
 
 
 @endsection()
