@@ -17,11 +17,11 @@
         <form action="" method="post" novalidate="novalidate">
             <div class="form-group">
                 <label for="category" class="control-label mb-1">Category</label>
-                <input id="category" name="category" type="text" class="form-control" aria-required="true" aria-invalid="false" value="100.00">
+                <input id="category" name="category" type="text" class="form-control" aria-required="true" aria-invalid="false" required>
             </div>
             <div class="form-group">
                 <label for="category_slug" class="control-label mb-1">Category Slug</label>
-                <input id="category_slug" name="category_slug" type="text" class="form-control" aria-required="true" aria-invalid="false" value="100.00">
+                <input id="category_slug" name="category_slug" type="text" class="form-control" aria-required="true" aria-invalid="false" required>
             </div>
             <div class="form-group has-success">
                 <label for="cc-name" class="control-label mb-1">Name on card</label>
