@@ -20,6 +20,7 @@ Route::get('/', function() {
 });
 
 Route::get('admin', [AdminController::class, 'index']);
+Route::get('adminu', [AdminController::class, 'update_password']);
 Route::post('admin/auth', [AdminController::class, 'auth'])->name('admin.auth');
 Route::post('admin/auth_logout', [AdminController::class, 'auth_logout'])->name('admin.auth_logout');
 

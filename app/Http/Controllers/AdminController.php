@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Admin;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
@@ -16,12 +17,19 @@ class AdminController extends Controller
         $email = $request->email;
         $pass = $request->password;
 
-        $result = Admin::where(['email'=>$email, 'password'=>$pass])->get();
+        // $result = Admin::where(['email'=>$email, 'password'=>$pass])->get();
+        $result = Admin::where(['email'=>$email, 'password'=>$pass])->first();
 
-        if(isset($result['0']->id)) {
-            $request->session()->put('ADMIN_LOGIN', true);
-            $request->session()->put('ADMIN_ID', $result['0']->id);
-            return redirect('admin/dashboard');
+        if($result) {
+            if(Hash::check($result->password, $request->post('password'))) {
+                $request->session()->put('ADMIN_LOGIN', true);
+                $request->session()->put('ADMIN_ID', $result->id);
+                return redirect('admin/dashboard');
+            }
+            else {
+                $request->session()->flash('error','Please Enter Valid Login.');
+                return redirect('admin');
+            }
         }
         else {
             $request->session()->flash('error','Please Enter Valid Login.');
@@ -31,13 +39,19 @@ class AdminController extends Controller
 
     public function auth_logout(Request $request)
     {
-        
+
         $request->session()->flush();
         return redirect('admin');
     }
-    
+
     public function dashboard()
     {
         return view('admin.dashboard');
+    }
+    public function update_password()
+    {
+        $r = Admin::find(1);
+        $r->password = Hash::make('admin');
+        $r->save();
     }
 }
