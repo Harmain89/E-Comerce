@@ -16,8 +16,8 @@
         <hr>
         <form action="" method="post" novalidate="novalidate">
             <div class="form-group">
-                <label for="cc-payment" class="control-label mb-1">Payment amount</label>
-                <input id="cc-pament" name="cc-payment" type="text" class="form-control" aria-required="true" aria-invalid="false" value="100.00">
+                <label for="cc-payment" class="control-label mb-1">Category</label>
+                <input id="category" name="category" type="text" class="form-control" aria-required="true" aria-invalid="false" value="100.00">
             </div>
             <div class="form-group has-success">
                 <label for="cc-name" class="control-label mb-1">Name on card</label>
