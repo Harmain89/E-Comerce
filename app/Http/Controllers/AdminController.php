@@ -14,14 +14,14 @@ class AdminController extends Controller
     }
     public function auth(Request $request)
     {
-        $email = $request->email;
-        $pass = $request->password;
+        $email = $request->post('email');
+        $pass = $request->post('password');
 
         // $result = Admin::where(['email'=>$email, 'password'=>$pass])->get();
-        $result = Admin::where(['email'=>$email, 'password'=>$pass])->first();
+        $result = Admin::where(['email'=>$email])->first();
 
         if($result) {
-            if(Hash::check($result->password, $request->post('password'))) {
+            if(Hash::check($pass, $result->password)) {
                 $request->session()->put('ADMIN_LOGIN', true);
                 $request->session()->put('ADMIN_ID', $result->id);
                 return redirect('admin/dashboard');
