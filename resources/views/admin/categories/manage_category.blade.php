@@ -23,12 +23,6 @@
                 <label for="category_slug" class="control-label mb-1">Category Slug</label>
                 <input id="category_slug" name="category_slug" type="text" class="form-control" aria-required="true" aria-invalid="false" required>
             </div>
-            <div class="form-group has-success">
-                <label for="cc-name" class="control-label mb-1">Name on card</label>
-                <input id="cc-name" name="cc-name" type="text" class="form-control cc-name valid" data-val="true" data-val-required="Please enter the name on card"
-                    autocomplete="cc-name" aria-required="true" aria-invalid="false" aria-describedby="cc-name-error">
-                <span class="help-block field-validation-valid" data-valmsg-for="cc-name" data-valmsg-replace="true"></span>
-            </div>
             <div class="form-group">
                 <label for="cc-number" class="control-label mb-1">Card number</label>
                 <input id="cc-number" name="cc-number" type="tel" class="form-control cc-number identified visa" value="" data-val="true"
