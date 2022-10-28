@@ -477,7 +477,7 @@ use Illuminate\Support\Facades\URL;
                 </div>
 
 
-                <!-- CATEGORY EDIT MODAL -->
+                <!-- MODAL CATEGORY EDIT -->
                 <div class="modal fade" id="categoryEdit" tabindex="-1" role="dialog" aria-labelledby="categoryEditTitle" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
@@ -496,7 +496,7 @@ use Illuminate\Support\Facades\URL;
                     </div>
                     </div>
                 </div>
-                {{-- END CATEGORY EDIT MODAL --}}
+                {{-- MODAL END CATEGORY EDIT --}}
 
             </div>
             <!-- END MAIN CONTENT-->
