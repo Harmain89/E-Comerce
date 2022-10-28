@@ -15,7 +15,10 @@ class CategoryController extends Controller
     public function index()
     {
         $link_active = "category";
-        return view('admin.categories.category');
+        $data = Category::all();
+        return view('admin.categories.category', [
+            'data' => $data
+        ]);
     }
 
     public function manage_category()

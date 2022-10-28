@@ -27,6 +27,7 @@ Route::post('admin/auth_logout', [AdminController::class, 'auth_logout'])->name(
 Route::group(['middleware'=>'admin_auth'], function() {
     Route::get('admin/dashboard', [AdminController::class, 'dashboard']);
     Route::get('admin/category', [CategoryController::class, 'index']);
-    Route::get('admin/manage_category', [CategoryController::class, 'manage_category']);
+    Route::get('admin/manage_category', [CategoryController::class, 'manage_category'])->name('admin.manage_category');
     Route::post('admin/category_create', [CategoryController::class, 'create'])->name('admin.category_create');
+    Route::post('admin/category_edit', [CategoryController::class, 'edit'])->name('admin.category_edit');
 });
