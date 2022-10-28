@@ -69,8 +69,8 @@
                 async : true,
                 dataType: "json",
                 success: function (response) {
-                    $('#exampleModalCenterTitle').html(response.msg);
                     // console.log(response.msg);
+                    $('#exampleModalCenterTitle').html(response.msg);
                     $('#exampleModalCenter').modal('show');
                 }
             });
