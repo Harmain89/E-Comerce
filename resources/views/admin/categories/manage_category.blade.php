@@ -35,9 +35,9 @@
 
 
                 <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+        {{-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
             Launch demo modal
-        </button>
+        </button> --}}
 
 
 
@@ -48,13 +48,6 @@
 
 
 <script>
-
-    // $(selector).click(function (e) {
-    //     e.preventDefault();
-    //     new bootstrap.Toast($('#basicToast')).show();
-    // });
-
-
 
     $(document).ready(function () {
 
@@ -79,6 +72,7 @@
                 success: function (response) {
                     $('#gh').html(response.msg);
                     console.log(response.msg);
+                    $('#exampleModalCenter').modal('show');
                 }
             });
 
