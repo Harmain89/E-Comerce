@@ -494,8 +494,8 @@ use Illuminate\Support\Facades\URL;
                                   <input type="text" class="form-control form-control-lg" id="category-name" aria-describedby="emailHelp" placeholder="Enter Category">
                                 </div>
                                 <div class="form-group">
-                                  <label for="category-slug">Category Slug</label>
-                                  <input type="text" class="form-control form-control-lg" id="category-slug" placeholder="Enter Category Slug">
+                                    <label for="category-slug">Example textarea</label>
+                                    <textarea class="form-control form-control-lg" id="category-slug" rows="3"></textarea>
                                 </div>
                                 {{-- <div class="form-group form-check">
                                   <input type="checkbox" class="form-check-input" id="exampleCheck1">
