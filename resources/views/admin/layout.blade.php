@@ -482,13 +482,27 @@ use Illuminate\Support\Facades\URL;
                     <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                        <h5 class="modal-title" id="categoryEditTitle"></h5>
+                        <h5 class="modal-title" id="categoryEditTitle">Edit </h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                         </div>
                         <div class="modal-body">
-                            <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/></svg>
+                            <form>
+                                <div class="form-group">
+                                  <label for="category-name">Category Name</label>
+                                  <input type="text" class="form-control form-control-lg" id="category-name" aria-describedby="emailHelp" placeholder="Enter Category">
+                                </div>
+                                <div class="form-group">
+                                  <label for="category-slug">Category Slug</label>
+                                  <input type="text" class="form-control form-control-lg" id="category-slug" placeholder="Enter Category Slug">
+                                </div>
+                                {{-- <div class="form-group form-check">
+                                  <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                  <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                                </div> --}}
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                              </form>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-primary btn-lg btn-block" data-dismiss="modal">OK</button>

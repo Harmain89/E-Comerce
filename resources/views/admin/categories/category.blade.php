@@ -58,7 +58,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="table-responsive table-responsive-data2">
+                <div class="table-responsive table-responsive-data2" id="datatablesSimple">
                     <table class="table table-data2">
                         <thead>
                             <tr>
@@ -116,9 +116,41 @@
 
         <script>
             $(document).ready(function () {
-                $('.category-edit').click(function () {
+                // $('.category-edit').click(function () {
+                //     $('#categoryEdit').modal('show');
+                // });
+
+                $("#datatablesSimple").on('click','.category-edit',function(){
+                    // get the current row
+                    var currentRow = $(this).closest("tr");
+
+                    var category_name = currentRow.find("td:eq(1)").text(); // get current row 1st TD value
+                    var category_slug = currentRow.find("td:eq(2)").text(); // get current row 2nd TD
+                    var data = category_name + "\n" + category_slug;
+
+                    // alert(data);
+
+                    $('#categoryEditTitle').append(category_name);
+
+                    var c_n = $.trim(category_name);
+                    $('#category-name').val(c_n);
+
+                    var c_s = $.trim(category_slug);
+                    $('#category-slug').val(c_s);
+
+                    // $('#show_name').val(name);
+                    // $('#show_image').attr("src",image);
+
+                    // var slu = $.trim(slug)
+                    // $('#show_slug').val(slu);
+
                     $('#categoryEdit').modal('show');
+                    // $('input[@type="text"]')[0].focus();
+                    // $('input:text#show_name').focus();
+                    // document.getElementById("show_name").focus();
                 });
+
+
             });
         </script>
 
