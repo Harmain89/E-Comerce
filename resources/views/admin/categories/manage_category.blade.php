@@ -31,7 +31,6 @@
                 </button>
             </div>
         </form>
-        {{-- <h2 class="mt-3" id="gh"></h2> --}}
 
 
                 <!-- Button trigger modal -->
@@ -70,8 +69,8 @@
                 async : true,
                 dataType: "json",
                 success: function (response) {
-                    $('#gh').html(response.msg);
-                    console.log(response.msg);
+                    $('#exampleModalCenterTitle').html(response.msg);
+                    // console.log(response.msg);
                     $('#exampleModalCenter').modal('show');
                 }
             });
