@@ -456,25 +456,47 @@ use Illuminate\Support\Facades\URL;
                     </div>
                 </div>
 
-            <!-- Modal -->
-            <div class="modal" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalCenterTitle"></h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                <!-- Modal -->
+                <div class="modal modal-effect" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog-effect modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalCenterTitle"></h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        </div>
+                        <div class="modal-body">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/></svg>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary btn-lg btn-block" data-dismiss="modal">OK</button>
+                        </div>
                     </div>
-                    <div class="modal-body">
-                        <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/></svg>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-primary btn-lg btn-block" data-dismiss="modal">OK</button>
                     </div>
                 </div>
+
+
+                <!-- CATEGORY EDIT MODAL -->
+                <div class="modal fade" id="categoryEdit" tabindex="-1" role="dialog" aria-labelledby="categoryEditTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h5 class="modal-title" id="categoryEditTitle"></h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        </div>
+                        <div class="modal-body">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/></svg>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary btn-lg btn-block" data-dismiss="modal">OK</button>
+                        </div>
+                    </div>
+                    </div>
                 </div>
-            </div>
+                {{-- END CATEGORY EDIT MODAL --}}
 
             </div>
             <!-- END MAIN CONTENT-->
@@ -484,11 +506,11 @@ use Illuminate\Support\Facades\URL;
     </div>
 
     <script>
-        $('.modal').on('show.bs.modal', function (e) {
-            $('.modal .modal-dialog').attr('class', 'modal-dialog  flipInX  animated modal-dialog modal-dialog-centered');
+        $('.modal-effect').on('show.bs.modal', function (e) {
+            $('.modal-effect .modal-dialog-effect').attr('class', 'modal-dialog  flipInX  animated modal-dialog modal-dialog-centered');
         })
-            $('.modal').on('hide.bs.modal', function (e) {
-            $('.modal .modal-dialog').attr('class', 'modal-dialog  flipOutX  animated modal-dialog modal-dialog-centered');
+            $('.modal-effect').on('hide.bs.modal', function (e) {
+            $('.modal-effect .modal-dialog-effect').attr('class', 'modal-dialog  flipOutX  animated modal-dialog modal-dialog-centered');
         })
     </script>
 

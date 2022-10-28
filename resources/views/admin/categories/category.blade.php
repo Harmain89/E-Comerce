@@ -93,7 +93,7 @@
                                     <td> {{ $item->updated_at }} </td>
                                     <td>
                                         <div class="table-data-feature">
-                                            <button class="item" data-toggle="tooltip" data-placement="top" title="Edit">
+                                            <button class="item category-edit" data-toggle="tooltip" data-placement="top" title="Edit">
                                                 <i class="zmdi zmdi-edit"></i>
                                             </button>
                                             <button class="item" data-toggle="tooltip" data-placement="top" title="Delete">
@@ -111,7 +111,16 @@
                 <!-- END DATA TABLE -->
             </div>
         </div>
-        {{-- END DATA TABLE 2 --}}
+
+
+
+        <script>
+            $(document).ready(function () {
+                $('.category-edit').click(function () {
+                    $('#categoryEdit').modal('show');
+                });
+            });
+        </script>
 
 
     </div>
