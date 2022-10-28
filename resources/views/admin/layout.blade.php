@@ -458,7 +458,7 @@ use Illuminate\Support\Facades\URL;
 
             <!-- Modal -->
             <div class="modal" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered fade-scale" role="document">
+                <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalCenterTitle"></h5>
@@ -482,6 +482,15 @@ use Illuminate\Support\Facades\URL;
         </div>
 
     </div>
+
+    <script>
+        $('.modal').on('show.bs.modal', function (e) {
+            $('.modal .modal-dialog').attr('class', 'modal-dialog  flipInX  animated modal-dialog modal-dialog-centered');
+        })
+            $('.modal').on('hide.bs.modal', function (e) {
+            $('.modal .modal-dialog').attr('class', 'modal-dialog  flipOutX  animated modal-dialog modal-dialog-centered');
+        })
+    </script>
 
 
     <!-- Bootstrap JS-->
