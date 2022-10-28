@@ -130,7 +130,7 @@
 
                     // alert(data);
 
-                    $('#categoryEditTitle').append(category_name);
+                    $('#categoryEditTitle').text(category_name);
 
                     var c_n = $.trim(category_name);
                     $('#category-name').val(c_n);
