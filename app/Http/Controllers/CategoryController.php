@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CategoryController extends Controller
 {
@@ -75,10 +76,18 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function edit(Request $request, Category $category)
+    public function edit(Request $request)
     {
+        $cat_id = $request->togetid;
         $category_name = $request->category_name;
         $category_slug = $request->category_slug;
+
+        DB::table('categories')
+              ->where('id', $cat_id)
+              ->update([
+                'category_name' => $category_name,
+                'category_slug' => $category_slug,
+              ]);
 
         return [
             "msg" => "Category ( ".$category_name." ) has been Updated!",
