@@ -85,6 +85,7 @@
                                             <span class="au-checkmark"></span>
                                         </label>
                                     </td>
+                                    <td class="d-none"> {{ $item->id }} </td>
                                     <td> {{ $item->category_name }} </td>
                                     <td>
                                         <span class="block-email"> {{ $item->category_slug }} </span>
