@@ -78,7 +78,7 @@
                         <tbody>
                             @foreach ($data as $item)
 
-                                <tr class="tr-shadow">
+                                <tr class="tr-shadow" id="c-{{ $item->id }}">
                                     <td>
                                         <label class="au-checkbox">
                                             <input type="checkbox">
@@ -113,21 +113,25 @@
             </div>
         </div>
 
+        <span class="d-none" id="togetvalue"></span>
+
 
 
         <script>
             $(document).ready(function () {
 
-                $("#datatablesSimple").on('click','.category-edit',function(){
+                $("#datatablesSimple").on('click','.category-edit',function(e){
                     // get the current row
                     var currentRow = $(this).closest("tr");
+                    var currentRowid = $(this).closest("tr").attr("id");
 
-                    var category_name = currentRow.find("td:eq(1)").text(); // get current row 1st TD value
-                    var category_slug = currentRow.find("td:eq(2)").text(); // get current row 2nd TD
+                    var category_name = currentRow.find("td:eq(2)").text(); // get current row 1st TD value
+                    var category_slug = currentRow.find("td:eq(3)").text(); // get current row 2nd TD
                     var data = category_name + "\n" + category_slug;
 
                     // alert(data);
 
+                    $('#togetvalue').text(currentRowid);
                     $('#categoryEditTitle').text(category_name);
 
                     var c_n = $.trim(category_name);
@@ -138,15 +142,20 @@
 
                     // $('#show_image').attr("src",image);
 
+
+                    var fg = $(`#datatablesSimple table #${currentRowid}`).find("td:eq(2)").text();
+                    console.log(fg);
+
                     $('#categoryEdit').modal('show');
                     // $('input[@type="text"]')[0].focus();
                     // $('input:text#show_name').focus();
                     // document.getElementById("show_name").focus();
+
+                    e.preventDefault();
                 });
 
 
                 $('#save-category-edit').click(function (e) {
-                    e.preventDefault();
 
                     var category_name = $('#category-name').val();
                     var category_slug = $('#category-slug').val();
@@ -167,11 +176,23 @@
                             console.log(response.msg);
                             // console.log(response.msg2);
                             // $('#exampleModalCenterTitle').html(response.msg);
+                            // var category_name = currentRow.find("td:eq(1)").text();
+                            // $("#datatablesSimple table td:first .1").text("Picked");
+                            $('#datatablesSimple table table td').eq(2).text('Picked');
+
                             $('#categoryEdit').modal('hide');
                             $('#exampleModalCenterTitle').html(response.msg);
                             $('#exampleModalCenter').modal('show');
+
+
+                            var togetvalue = $('#togetvalue').text();
+                            var cat_changed_name_val = $(`#datatablesSimple table #${togetvalue}`).find("td:eq(2)").text();
+                            var cat_changed_slug_val = $(`#datatablesSimple table #${togetvalue}`).find("td:eq(3)").text();
+                            console.log($.trim(cat_changed_name_val));
+                            console.log($.trim(cat_changed_slug_val));
                         }
                     });
+                    e.preventDefault();
 
                 });
 
