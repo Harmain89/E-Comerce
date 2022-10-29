@@ -193,14 +193,15 @@
                             $('#exampleModalCenter').modal('show');
 
                             var togetvalue = $('#togetvalue').text();
-                            var cat_changed_name_val = $(`#datatablesSimple table #${togetvalue}`).find("td:eq(2)").text();
-                            var cat_changed_slug_val = $(`#datatablesSimple table #${togetvalue}`).find("td:eq(3)").text();
+                            $(`#datatablesSimple table #${togetvalue}`).find("td:eq(2)").text(category_name);
+                            $(`#datatablesSimple table #${togetvalue}`).find("td:eq(3)").text(category_slug);
 
 
-                            console.log(togetid);
-                            console.log(togetvalue);
-                            console.log(category_name);
-                            console.log(category_slug);
+                            // console.log(togetid);
+                            // console.log(togetvalue);
+                            // console.log(category_name);
+                            // console.log(category_slug);
+
                             // console.log($.trim(cat_changed_name_val));
                             // console.log($.trim(cat_changed_slug_val));
                         }
