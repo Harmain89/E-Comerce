@@ -214,7 +214,6 @@
 
                 $("#datatablesSimple").on('click','.category-delete',function(e){
                     e.preventDefault();
-                    $('#categoryDelete').modal('show');
 
                     // get the current row
                     var currentRow = $(this).closest("tr");
@@ -225,6 +224,7 @@
 
                     // alert(data);
 
+                    $('#categoryDelete').modal('show');
 
                     $('#delete-category').click(function (e) {
                         e.preventDefault();
@@ -252,6 +252,8 @@
 
                                 $('#exampleModalCenterTitle').html(response.msg);
                                 $('#exampleModalCenter').modal('show');
+
+                                $('#categoryDelete').modal('hide');
                             }
                         });
                     });
