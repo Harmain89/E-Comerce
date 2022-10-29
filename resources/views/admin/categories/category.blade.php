@@ -161,6 +161,24 @@
 
                 });
 
+                $("#datatablesSimple").on('click','.category-delete',function(e){
+                    e.preventDefault();
+
+                    // get the current row
+                    var currentRowid = $(this).closest("tr").attr("id");
+                    $('#togetvalue').text($.trim(currentRowid));
+                    var row_delete_id = $('#togetvalue').text();
+
+                    $('#delete-category').click(function (e) {
+                        e.preventDefault();
+
+
+                        $(`tr#${row_delete_id}`).remove();
+
+                    });
+
+                });
+
 
                 $('#save-category-edit').click(function (e) {
                     e.preventDefault();
@@ -252,6 +270,8 @@
                                 $('#exampleModalCenter').modal('show');
 
                                 $('#categoryDelete').modal('hide');
+
+
                             }
                         });
                     });
