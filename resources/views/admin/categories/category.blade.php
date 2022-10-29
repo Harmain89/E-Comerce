@@ -161,6 +161,8 @@
 
                 });
 
+
+                // FOR REMOVING TR ON DELETING CATEGORY
                 $("#datatablesSimple").on('click','.category-delete',function(e){
                     e.preventDefault();
 
