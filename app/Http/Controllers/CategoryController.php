@@ -116,4 +116,16 @@ class CategoryController extends Controller
     {
         //
     }
+
+    public function delete(Request $request)
+    {
+        $row_id = $request->row_id;
+        $category_name = $request->category_name;
+
+        $model = Category::find($row_id)->delete();
+
+        return [
+            "msg" => $category_name . " has been deleted!"
+        ];
+    }
 }

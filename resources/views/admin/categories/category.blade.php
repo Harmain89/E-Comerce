@@ -97,7 +97,7 @@
                                             <button class="item category-edit" data-toggle="tooltip" data-placement="top" title="Edit">
                                                 <i class="zmdi zmdi-edit text-info"></i>
                                             </button>
-                                            <button class="item" data-toggle="tooltip" data-placement="top" title="Delete">
+                                            <button class="item category-delete" data-toggle="tooltip" data-placement="top" title="Delete">
                                                 <i class="zmdi zmdi-delete text-danger"></i>
                                             </button>
                                         </div>
@@ -204,6 +204,50 @@
 
                             // console.log($.trim(cat_changed_name_val));
                             // console.log($.trim(cat_changed_slug_val));
+                        }
+                    });
+
+                });
+
+
+                // DELETE FUNCTION
+                $("#datatablesSimple").on('click','.category-delete',function(e){
+                    e.preventDefault();
+
+                    // get the current row
+                    var currentRow = $(this).closest("tr");
+
+                    var row_id = currentRow.find("td:eq(1)").text(); // get current row 1st TD value
+                    var category_name = currentRow.find("td:eq(2)").text(); // get current row 2nd TD value
+                    var data = row_id;
+
+                    // alert(data);
+
+
+                    $.ajax({
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        type: "post",
+                        url: " {{ route('admin.category_delete') }} ",
+                        data: {
+                            row_id: row_id,
+                            category_name: category_name
+                        },
+                        async : true,
+                        dataType: "json",
+                        success: function (response) {
+
+                            // $('#categoryEdit').modal('hide');
+                            // $('#exampleModalCenterTitle').html(response.msg);
+                            // $('#exampleModalCenter').modal('show');
+
+                            // var togetvalue = $('#togetvalue').text();
+                            // $(`#datatablesSimple table #${togetvalue}`).find("td:eq(2)").text(category_name);
+                            // $(`#datatablesSimple table #${togetvalue}`).find("td:eq(3)").text(category_slug);
+
+                            $('#exampleModalCenterTitle').html(response.msg);
+                            $('#exampleModalCenter').modal('show');
                         }
                     });
 

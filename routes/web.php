@@ -30,4 +30,5 @@ Route::group(['middleware'=>'admin_auth'], function() {
     Route::get('admin/manage_category', [CategoryController::class, 'manage_category'])->name('admin.manage_category');
     Route::post('admin/category_create', [CategoryController::class, 'create'])->name('admin.category_create');
     Route::post('admin/category_edit', [CategoryController::class, 'edit'])->name('admin.category_edit');
+    Route::post('admin/category_delete', [CategoryController::class, 'delete'])->name('admin.category_delete');
 });
