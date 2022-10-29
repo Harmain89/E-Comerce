@@ -61,3 +61,12 @@
 </div>
 {{-- MODAL END CATEGORY EDIT --}}
 
+
+<script>
+    $('.modal-effect').on('show.bs.modal', function (e) {
+        $('.modal-effect .modal-dialog-effect').attr('class', 'modal-dialog  flipInX  animated modal-dialog modal-dialog-centered');
+    })
+        $('.modal-effect').on('hide.bs.modal', function (e) {
+        $('.modal-effect .modal-dialog-effect').attr('class', 'modal-dialog  flipOutX  animated modal-dialog modal-dialog-centered');
+    })
+</script>
