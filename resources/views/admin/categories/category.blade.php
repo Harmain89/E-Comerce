@@ -144,6 +144,37 @@
                 });
 
 
+                $('#save-category-edit').click(function (e) {
+                    e.preventDefault();
+
+                    var category_name = $('#category-name').val();
+                    var category_slug = $('#category-slug').val();
+
+                    $.ajax({
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        type: "post",
+                        url: " {{ route('admin.category_edit') }} ",
+                        data: {
+                            category_name: category_name,
+                            category_slug: category_slug
+                        },
+                        async : true,
+                        dataType: "json",
+                        success: function (response) {
+                            console.log(response.msg);
+                            // console.log(response.msg2);
+                            // $('#exampleModalCenterTitle').html(response.msg);
+                            $('#categoryEdit').modal('hide');
+                            $('#exampleModalCenterTitle').html(response.msg);
+                            $('#exampleModalCenter').modal('show');
+                        }
+                    });
+
+                });
+
+
             });
         </script>
 

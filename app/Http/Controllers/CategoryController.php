@@ -75,9 +75,14 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function edit(Category $category)
+    public function edit(Request $request, Category $category)
     {
-        //
+        $category_name = $request->category_name;
+        $category_slug = $request->category_slug;
+
+        return [
+            "msg" => "Category ( ".$category_name." ) has been Updated!",
+        ];
     }
 
     /**
