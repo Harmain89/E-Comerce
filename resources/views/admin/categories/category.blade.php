@@ -94,10 +94,10 @@
                                     <td>
                                         <div class="table-data-feature">
                                             <button class="item category-edit" data-toggle="tooltip" data-placement="top" title="Edit">
-                                                <i class="zmdi zmdi-edit"></i>
+                                                <i class="zmdi zmdi-edit text-info"></i>
                                             </button>
                                             <button class="item" data-toggle="tooltip" data-placement="top" title="Delete">
-                                                <i class="zmdi zmdi-delete"></i>
+                                                <i class="zmdi zmdi-delete text-danger"></i>
                                             </button>
                                         </div>
                                     </td>
