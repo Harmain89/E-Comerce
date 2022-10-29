@@ -116,9 +116,6 @@
 
         <script>
             $(document).ready(function () {
-                // $('.category-edit').click(function () {
-                //     $('#categoryEdit').modal('show');
-                // });
 
                 $("#datatablesSimple").on('click','.category-edit',function(){
                     // get the current row
@@ -138,11 +135,7 @@
                     var c_s = $.trim(category_slug);
                     $('#category-slug').val(c_s);
 
-                    // $('#show_name').val(name);
                     // $('#show_image').attr("src",image);
-
-                    // var slu = $.trim(slug)
-                    // $('#show_slug').val(slu);
 
                     $('#categoryEdit').modal('show');
                     // $('input[@type="text"]')[0].focus();
