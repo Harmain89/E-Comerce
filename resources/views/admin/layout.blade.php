@@ -501,12 +501,18 @@ use Illuminate\Support\Facades\URL;
                                   <input type="checkbox" class="form-check-input" id="exampleCheck1">
                                   <label class="form-check-label" for="exampleCheck1">Check me out</label>
                                 </div> --}}
-                                <button id="save-category-edit" type="" class="btn btn-primary">Submit</button>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <button id="save-category-edit" type="" class="btn btn-success btn-lg btn-block">Submit</button>
+                                    </div>
+                                    <div class="col-6">
+                                        <button type="button" class="btn btn-danger btn-lg btn-block" data-dismiss="modal">Cancel</button>
+                                    </div>
+                                </div>
                               </form>
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-primary btn-lg btn-block" data-dismiss="modal">OK</button>
-                        </div>
+                        {{-- <div class="modal-footer">
+                        </div> --}}
                     </div>
                     </div>
                 </div>
