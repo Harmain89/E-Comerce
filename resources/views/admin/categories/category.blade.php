@@ -129,8 +129,6 @@
                     var currentRow = $(this).closest("tr");
                     var currentRowid = $(this).closest("tr").attr("id");
 
-
-
                     var row_id = currentRow.find("td:eq(1)").text(); // get current row 1st TD value
                     var category_name = currentRow.find("td:eq(2)").text(); // get current row 2nd TD value
                     var category_slug = currentRow.find("td:eq(3)").text(); // get current row 3nd TD
