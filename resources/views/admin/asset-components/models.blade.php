@@ -1,5 +1,5 @@
 
-<!-- Modal -->
+<!-- Filiping Modal -->
 <div class="modal modal-effect" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog-effect modal-dialog-centered" role="document">
     <div class="modal-content">
@@ -60,6 +60,34 @@
     </div>
 </div>
 {{-- MODAL END CATEGORY EDIT --}}
+
+
+
+<!-- Deleting Modal -->
+<div class="modal fade" id="categoryDelete" tabindex="-1" role="dialog" aria-labelledby="categoryDeleteTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+        <h5 class="modal-title">Are You Sure To Delete This ? <span id="categoryDeleteTitle"></span></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-6">
+                    <button id="delete-category" type="" class="btn btn-success btn-lg btn-block">Delete</button>
+                </div>
+                <div class="col-6">
+                    <button type="button" class="btn btn-danger btn-lg btn-block" data-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        </div>
+        {{-- <div class="modal-footer">
+        </div> --}}
+    </div>
+    </div>
+</div>
 
 
 <script>
