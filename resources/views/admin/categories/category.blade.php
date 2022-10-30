@@ -162,26 +162,6 @@
                 });
 
 
-                // FOR REMOVING TR ON DELETING CATEGORY
-                $("#datatablesSimple").on('click','.category-delete',function(e){
-                    e.preventDefault();
-
-                    // get the current row
-                    var currentRowid = $(this).closest("tr").attr("id");
-                    $('#togetvalue').text($.trim(currentRowid));
-                    var row_delete_id = $('#togetvalue').text();
-
-                    $('#delete-category').click(function (e) {
-                        e.preventDefault();
-
-
-                        $(`tr#${row_delete_id}`).remove();
-
-                    });
-
-                });
-
-
                 $('#save-category-edit').click(function (e) {
                     e.preventDefault();
 
@@ -234,11 +214,14 @@
                     e.preventDefault();
 
                     // get the current row
-                    var currentRow = $(this).closest("tr");
+                    let currentRow = $(this).closest("tr");
 
                     var row_id = currentRow.find("td:eq(1)").text(); // get current row 1st TD value
+
                     var category_name = currentRow.find("td:eq(2)").text(); // get current row 2nd TD value
                     var data = row_id;
+
+                    // Object.values(person).pop();
 
                     // alert(data);
 
@@ -246,6 +229,7 @@
 
                     $('#delete-category').click(function (e) {
                         e.preventDefault();
+
                         $.ajax({
                             headers: {
                                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -272,12 +256,46 @@
                                 $('#exampleModalCenter').modal('show');
 
                                 $('#categoryDelete').modal('hide');
-
+                                console.log(response.errormsg);
 
                             }
                         });
                     });
 
+
+                    $('#canceldelete').click(function (e) {
+                        e.preventDefault();
+                        row_id = '';
+                    });
+
+
+                });
+
+                // FOR REMOVING TR ON DELETING CATEGORY
+                $("#datatablesSimple").on('click','.category-delete',function(e){
+                    e.preventDefault();
+
+                    // get the current row
+                    var currentRowid = $(this).closest("tr").attr("id");
+                    $('#togetvalue').text($.trim(currentRowid));
+
+                    $('#delete-category').click(function (e) {
+                        e.preventDefault();
+
+
+                        var row_delete_id = $('#togetvalue').text();
+                        if(currentRowid != '') {
+                            $(`tr#${row_delete_id}`).remove();
+                            console.log("currentRowid = " + currentRowid);
+                        }
+
+                    });
+
+
+                    $('#canceldelete').click(function (e) {
+                        e.preventDefault();
+                        currentRowid = '';
+                    });
 
                 });
 

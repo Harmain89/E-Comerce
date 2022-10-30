@@ -79,7 +79,7 @@
                     <button id="delete-category" type="" class="btn btn-success btn-lg btn-block">Delete</button>
                 </div>
                 <div class="col-6">
-                    <button type="button" class="btn btn-danger btn-lg btn-block" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-danger btn-lg btn-block" id="canceldelete" data-dismiss="modal">Cancel</button>
                 </div>
             </div>
         </div>

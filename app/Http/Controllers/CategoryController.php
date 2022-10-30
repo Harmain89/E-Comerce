@@ -122,10 +122,14 @@ class CategoryController extends Controller
         $row_id = $request->row_id;
         $category_name = $request->category_name;
 
-        $model = Category::find($row_id)->delete();
+        if($row_id != '') {
+            $data = $row_id;
+            $model = Category::find($row_id)->delete();
+        }
 
         return [
-            "msg" => $category_name . " has been deleted!"
+            "msg" => $category_name . " has been deleted!",
+            "errormsg" => $data
         ];
     }
 }
