@@ -183,6 +183,10 @@ use Illuminate\Support\Facades\URL;
                             <a href="category">
                                 <i class="fas fa-chart-bar"></i>Category</a>
                         </li>
+                        <li class=" <?= (basename(URL::current()) == "coupon") || (basename(URL::current()) == "Coupon") ? "active" : ""; ?>">
+                            <a href="coupon">
+                                <i class="fas fa-chart-bar"></i>Coupon</a>
+                        </li>
                         <li>
                             <a href="chart.html">
                                 <i class="fas fa-chart-bar"></i>Charts</a>
