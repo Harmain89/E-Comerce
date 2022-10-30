@@ -60,4 +60,20 @@ class CouponController extends Controller
         ];
     }
 
+    public function delete(Request $request)
+    {
+        $coupon_id = $request->row_id;
+        $coupon_title = $request->coupon_title;
+
+        if($coupon_id != '') {
+            $data = $coupon_id;
+            $model = Coupon::find($coupon_id)->delete();
+        }
+
+        return [
+            "msg" => $coupon_title . " has been deleted!",
+            "errormsg" => $data
+        ];
+    }
+
 }

@@ -101,7 +101,7 @@
                                             <button class="item coupon-edit" data-toggle="tooltip" data-placement="top" title="Edit">
                                                 <i class="zmdi zmdi-edit text-info"></i>
                                             </button>
-                                            <button class="item category-delete" data-toggle="tooltip" data-placement="top" title="Delete">
+                                            <button class="item coupon-delete" data-toggle="tooltip" data-placement="top" title="Delete">
                                                 <i class="zmdi zmdi-delete text-danger"></i>
                                             </button>
                                         </div>
@@ -214,7 +214,7 @@
 
                 // DELETE FUNCTION
 
-                $("#datatablesSimple").on('click','.category-delete',function(e){
+                $("#datatablesSimple").on('click','.coupon-delete',function(e){
                     e.preventDefault();
 
                     // get the current row
@@ -222,16 +222,14 @@
 
                     var row_id = currentRow.find("td:eq(1)").text(); // get current row 1st TD value
 
-                    var category_name = currentRow.find("td:eq(2)").text(); // get current row 2nd TD value
+                    var coupon_title = currentRow.find("td:eq(2)").text(); // get current row 2nd TD value
                     var data = row_id;
-
-                    // Object.values(person).pop();
 
                     // alert(data);
 
-                    $('#categoryDelete').modal('show');
+                    $('#couponDelete').modal('show');
 
-                    $('#delete-category').click(function (e) {
+                    $('#delete-coupon').click(function (e) {
                         e.preventDefault();
 
                         $.ajax({
@@ -239,27 +237,19 @@
                                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                             },
                             type: "post",
-                            url: " {{ route('admin.category_delete') }} ",
+                            url: " {{ route('admin.coupon_delete') }} ",
                             data: {
                                 row_id: row_id,
-                                category_name: category_name
+                                coupon_title: coupon_title
                             },
                             async : true,
                             dataType: "json",
                             success: function (response) {
 
-                                // $('#categoryEdit').modal('hide');
-                                // $('#exampleModalCenterTitle').html(response.msg);
-                                // $('#exampleModalCenter').modal('show');
-
-                                // var togetvalue = $('#togetvalue').text();
-                                // $(`#datatablesSimple table #${togetvalue}`).find("td:eq(2)").text(category_name);
-                                // $(`#datatablesSimple table #${togetvalue}`).find("td:eq(3)").text(category_slug);
-
                                 $('#exampleModalCenterTitle').html(response.msg);
                                 $('#exampleModalCenter').modal('show');
 
-                                $('#categoryDelete').modal('hide');
+                                $('#couponDelete').modal('hide');
                                 console.log(response.errormsg);
 
                             }
@@ -276,14 +266,14 @@
                 });
 
                 // FOR REMOVING TR ON DELETING CATEGORY
-                $("#datatablesSimple").on('click','.category-delete',function(e){
+                $("#datatablesSimple").on('click','.coupon-delete',function(e){
                     e.preventDefault();
 
                     // get the current row
                     var currentRowid = $(this).closest("tr").attr("id");
                     $('#togetvalue').text($.trim(currentRowid));
 
-                    $('#delete-category').click(function (e) {
+                    $('#delete-coupon').click(function (e) {
                         e.preventDefault();
 
 
