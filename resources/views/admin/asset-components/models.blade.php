@@ -63,7 +63,7 @@
 
 
 
-<!-- Deleting Modal -->
+<!-- Category Deleting Modal -->
 <div class="modal fade" id="categoryDelete" tabindex="-1" role="dialog" aria-labelledby="categoryDeleteTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
@@ -88,6 +88,54 @@
     </div>
     </div>
 </div>
+
+
+
+<!-- MODAL COUPON EDIT -->
+<div class="modal fade" id="couponEdit" tabindex="-1" role="dialog" aria-labelledby="couponEditTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+        <h5 class="modal-title">Edit <span id="couponEditTitle"></span></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+        <div class="modal-body">
+            <form>
+                <div class="form-group">
+                  <label for="coupon-title">Coupon Title</label>
+                  <input type="text" class="form-control form-control-lg" id="coupon-title" aria-describedby="emailHelp" placeholder="Enter Category">
+                </div>
+                <div class="form-group">
+                  <label for="coupon-code">Coupon Code</label>
+                  <input type="text" class="form-control form-control-lg" id="coupon-code" aria-describedby="emailHelp" placeholder="Enter Category">
+                </div>
+                <div class="form-group">
+                  <label for="coupon-value">Coupon Value</label>
+                  <input type="text" class="form-control form-control-lg" id="coupon-value" aria-describedby="emailHelp" placeholder="Enter Category">
+                </div>
+                {{-- <div class="form-group form-check">
+                  <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                  <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                </div> --}}
+                <div class="row">
+                    <div class="col-6">
+                        <button id="save-coupon-edit" type="" class="btn btn-success btn-lg btn-block">Submit</button>
+                    </div>
+                    <div class="col-6">
+                        <button type="button" class="btn btn-danger btn-lg btn-block" data-dismiss="modal">Cancel</button>
+                    </div>
+                </div>
+              </form>
+        </div>
+        {{-- <div class="modal-footer">
+        </div> --}}
+    </div>
+    </div>
+</div>
+{{-- MODAL END COUPON EDIT --}}
+
 
 
 <script>

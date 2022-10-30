@@ -79,7 +79,7 @@
                         <tbody>
                             @foreach ($data as $item)
 
-                                <tr class="tr-shadow" id="c-{{ $item->id }}">
+                                <tr class="tr-shadow" id="coupon-{{ $item->id }}">
                                     <td>
                                         <label class="au-checkbox">
                                             <input type="checkbox">
@@ -98,7 +98,7 @@
                                     <td> {{ $item->updated_at }} </td>
                                     <td>
                                         <div class="table-data-feature">
-                                            <button class="item category-edit" data-toggle="tooltip" data-placement="top" title="Edit">
+                                            <button class="item coupon-edit" data-toggle="tooltip" data-placement="top" title="Edit">
                                                 <i class="zmdi zmdi-edit text-info"></i>
                                             </button>
                                             <button class="item category-delete" data-toggle="tooltip" data-placement="top" title="Delete">
@@ -123,6 +123,189 @@
 
 
         {{-- SCRIPTS WILL BE HERE ! --}}
+
+        <script>
+            $(document).ready(function () {
+
+                $("#datatablesSimple").on('click','.coupon-edit',function(e){
+                    e.preventDefault();
+
+                    // get the current row
+                    var currentRow = $(this).closest("tr");
+                    var currentRowid = $(this).closest("tr").attr("id");
+
+                    var row_id = currentRow.find("td:eq(1)").text(); // get current row 1st TD value
+                    var coupon_title = currentRow.find("td:eq(2)").text(); // get current row 2nd TD value
+                    var coupon_code = currentRow.find("td:eq(3)").text(); // get current row 3nd TD
+                    var coupon_value = currentRow.find("td:eq(4)").text(); // get current row 3nd TD
+                    var data = row_id + coupon_title + "\n" + coupon_code + "\n" + coupon_value;
+
+                    // alert(data);
+
+                    $('#togetvalue').text($.trim(currentRowid));
+                    $('#togetid').val($.trim(row_id));
+
+                    $('#couponEditTitle').text(coupon_title);
+
+                    var c_t = $.trim(coupon_title);
+                    $('#coupon-title').val(c_t);
+
+                    var c_c = $.trim(coupon_code);
+                    $('#coupon-code').val(c_c);
+
+                    var c_v = $.trim(coupon_value);
+                    $('#coupon-value').val(c_v);
+
+                    // $('#show_image').attr("src",image);
+
+
+                    var fg = $(`#datatablesSimple table #${currentRowid}`).find("td:eq(2)").text();
+                    console.log(fg);
+
+                    $('#couponEdit').modal('show');
+                    // $('input[@type="text"]')[0].focus();
+                    // $('input:text#show_name').focus();
+                    // document.getElementById("show_name").focus();
+
+
+                });
+
+
+                $('#save-coupon-edit').click(function (e) {
+                    e.preventDefault();
+
+                    var togetid = $('#togetid').val();
+                    var coupon_title = $('#coupon-title').val();
+                    var coupon_code = $('#coupon-code').val();
+                    var coupon_value = $('#coupon-value').val();
+
+                    $.ajax({
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        type: "post",
+                        url: " {{ route('admin.coupon_edit') }} ",
+                        data: {
+                            togetid: togetid,
+                            coupon_title: coupon_title,
+                            coupon_code: coupon_code,
+                            coupon_value: coupon_value
+                        },
+                        async : true,
+                        dataType: "json",
+                        success: function (response) {
+                            console.log(response.msg);
+                            // console.log(response.msg2);
+
+                            $('#couponEdit').modal('hide');
+                            $('#exampleModalCenterTitle').html(response.msg);
+                            $('#exampleModalCenter').modal('show');
+
+                            var togetvalue = $('#togetvalue').text();
+                            $(`#datatablesSimple table #${togetvalue}`).find("td:eq(2)").text(coupon_title);
+                            $(`#datatablesSimple table #${togetvalue}`).find("td:eq(3)").text(coupon_code);
+                            $(`#datatablesSimple table #${togetvalue}`).find("td:eq(4)").text(coupon_value);
+
+                        }
+                    });
+
+                });
+
+
+                // DELETE FUNCTION
+
+                $("#datatablesSimple").on('click','.category-delete',function(e){
+                    e.preventDefault();
+
+                    // get the current row
+                    let currentRow = $(this).closest("tr");
+
+                    var row_id = currentRow.find("td:eq(1)").text(); // get current row 1st TD value
+
+                    var category_name = currentRow.find("td:eq(2)").text(); // get current row 2nd TD value
+                    var data = row_id;
+
+                    // Object.values(person).pop();
+
+                    // alert(data);
+
+                    $('#categoryDelete').modal('show');
+
+                    $('#delete-category').click(function (e) {
+                        e.preventDefault();
+
+                        $.ajax({
+                            headers: {
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            },
+                            type: "post",
+                            url: " {{ route('admin.category_delete') }} ",
+                            data: {
+                                row_id: row_id,
+                                category_name: category_name
+                            },
+                            async : true,
+                            dataType: "json",
+                            success: function (response) {
+
+                                // $('#categoryEdit').modal('hide');
+                                // $('#exampleModalCenterTitle').html(response.msg);
+                                // $('#exampleModalCenter').modal('show');
+
+                                // var togetvalue = $('#togetvalue').text();
+                                // $(`#datatablesSimple table #${togetvalue}`).find("td:eq(2)").text(category_name);
+                                // $(`#datatablesSimple table #${togetvalue}`).find("td:eq(3)").text(category_slug);
+
+                                $('#exampleModalCenterTitle').html(response.msg);
+                                $('#exampleModalCenter').modal('show');
+
+                                $('#categoryDelete').modal('hide');
+                                console.log(response.errormsg);
+
+                            }
+                        });
+                    });
+
+
+                    $('#canceldelete').click(function (e) {
+                        e.preventDefault();
+                        row_id = '';
+                    });
+
+
+                });
+
+                // FOR REMOVING TR ON DELETING CATEGORY
+                $("#datatablesSimple").on('click','.category-delete',function(e){
+                    e.preventDefault();
+
+                    // get the current row
+                    var currentRowid = $(this).closest("tr").attr("id");
+                    $('#togetvalue').text($.trim(currentRowid));
+
+                    $('#delete-category').click(function (e) {
+                        e.preventDefault();
+
+
+                        var row_delete_id = $('#togetvalue').text();
+                        if(currentRowid != '') {
+                            $(`tr#${row_delete_id}`).remove();
+                            console.log("currentRowid = " + currentRowid);
+                        }
+
+                    });
+
+
+                    $('#canceldelete').click(function (e) {
+                        e.preventDefault();
+                        currentRowid = '';
+                    });
+
+                });
+
+
+            });
+        </script>
 
 
     </div>

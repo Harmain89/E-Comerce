@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Coupon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CouponController extends Controller
 {
@@ -37,6 +38,26 @@ class CouponController extends Controller
             "msg"=>"Category ( ".$coupon_title." ) has been saved!",
         ];
 
+    }
+
+    public function edit(Request $request)
+    {
+        $coupon_id = $request->togetid;
+        $coupon_title = $request->coupon_title;
+        $coupon_code = $request->coupon_code;
+        $coupon_value = $request->coupon_value;
+
+        DB::table('coupons')
+              ->where('id', $coupon_id)
+              ->update([
+                'title' => $coupon_title,
+                'code' => $coupon_code,
+                'value' => $coupon_value,
+              ]);
+
+        return [
+            "msg" => "Coupon ( ".$coupon_title." ) has been Generated!",
+        ];
     }
 
 }
