@@ -11,9 +11,10 @@ class CouponController extends Controller
     public function index()
     {
         $link_active = "category";
-        $data = Coupon::all();
+        $data = Coupon::orderBy('id', 'desc');
+        // $data->get();
         return view('admin.coupons.coupon', [
-            'data' => $data
+            'data' => $data->get()
         ]);
     }
 
@@ -24,6 +25,12 @@ class CouponController extends Controller
 
     public function create(Request $request)
     {
+        // $request->validate([
+        //     'title' => 'required',
+        //     'code' => 'required',
+        //     'value' => 'required'
+        // ]);
+
         $coupon_title = $request->post('coupon_title');
         $coupon_code = $request->post('coupon_code');
         $coupon_value = $request->post('coupon_value');
@@ -34,9 +41,12 @@ class CouponController extends Controller
         $model->value = $coupon_value;
         $model->save();
 
+        // $request->session->flash('message', "Category ( ".$coupon_title." ) has been saved!");
+
         return [
             "msg"=>"Category ( ".$coupon_title." ) has been saved!",
         ];
+
 
     }
 
