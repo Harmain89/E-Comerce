@@ -17,6 +17,7 @@ class AdminController extends Controller
             return view('admin.login');
         }
     }
+
     public function auth(Request $request)
     {
         $email = $request->post('email');
